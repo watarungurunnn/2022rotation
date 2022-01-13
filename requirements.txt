@@ -1,0 +1,7 @@
+nptyping
+numpy
+pandas
+pathlib
+flake8
+mypy
+isort
