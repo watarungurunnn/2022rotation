@@ -25,21 +25,50 @@
     ```
     $ git checkout -b ブランチ名
     ```
+    ※ 二回目以降は
+    ```
+    $ git checkout ブランチ名
+    ```
+1. .pyファイル及びREADMEを編集
 1. flake8とmypyのチェックを行う
 
    ```bash
    $ flake8 src/
+   $ flake8 main.py
    $ mypy src/
+   $ mypy main.py
    ```
+   ここで表示されるメッセージを元に体裁を整えてください。
 
 1. isortでライブラリのimport順を整える
 
    ```bash
    $ isort src/
-   $ isort tests/
+   $ isort main.py
    ```
 1. (自身が作成した箇所はREADME.mdを更新する)
-9. 最後にPRを出し、確認してmerge
+1. リモートリポジトリに反映
+    ```
+    $ git pull origin main
+    ```
+    競合が生じていたら[こちら](https://backlog.com/ja/git-tutorial/pull-request/10/)を参照
+    ```
+    $ git branch
+    ```
+    これで自分の名前のブランチにいることを確認してください。
+    ```
+    $ git add 変更したファイル
+    $ git commit -m "メッセージ"
+    $ git push origin 自分のブランチ名
+    ```
+
+
+1. 最後にブラウザでgithubのレポジトリのページからPRを出し、確認してmerge
 
 
 ## パッケージ
+### input
+
+### optimize
+
+### output
