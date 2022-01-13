@@ -14,4 +14,4 @@ class BaseOptimize(metaclass=abc.ABCMeta):
         最適化した結果を返す
         :return: 結果
         """
-        return NotImplementedError
+        raise NotImplementedError

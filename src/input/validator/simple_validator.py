@@ -1,11 +1,10 @@
-from .base_optimize import BaseOptimize
+from .base_validator import BaseValidator
 
-
-class OptimizeMinoura(BaseOptimize):
+class SimpleValidator(BaseValidator):
     """
-    順位情報を受け取り、最適化したデータを返す
+    入力データに不整合がないかチェックする
     """
-    def __init__(self, input_data, **kwargs) -> None:
+    def __init__(self, input_data):
         """
         kwargsは必要な引数に置き換えてください(あれば)
         :param input_data: インプットデータ
@@ -13,9 +12,8 @@ class OptimizeMinoura(BaseOptimize):
         """
         self.input_data = input_data
 
-    def fit(**kwargs):
+    def validate(**kwargs):
         """
-        最適化した結果を返す
-        :return: 結果
+        不整合があればエラーを返す
         """
         raise NotImplementedError
