@@ -7,7 +7,7 @@ class SimpleInput(BaseInput):
     """
     inputを受け取り、成形したデータを返す
     """
-    def __init__(self, input_path) -> None:
+    def __init__(self, input_path: str) -> None:
         """
         inputを受け取り、成形したデータを返す
         :params input_path: 入力ファイルのpath
