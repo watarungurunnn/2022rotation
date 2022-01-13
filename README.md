@@ -22,6 +22,7 @@
     $ python main.py インプットファイルへのパス (--name アウトプットファイルの名前)(-o アウトプットファイルを格納するディレクトリのパス) (--model モデル名)
     ```
     と実行。(カッコの中は任意)
+
     example:
     ```
     $ python main.py input.xls --name result.xls --model 'Sakaguchi'
