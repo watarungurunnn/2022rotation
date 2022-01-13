@@ -30,6 +30,7 @@
     $ git checkout ブランチ名
     ```
 1. .pyファイル及びREADMEを編集
+1. 新しくインストールしたパッケージがあればrequirements.txtに追記
 1. flake8とmypyのチェックを行う
 
    ```bash

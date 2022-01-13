@@ -18,4 +18,4 @@ class SimpleOutput(BaseOutput):
         結果を出力する
         :return: 結果
         """
-        return NotImplementedError
+        raise NotImplementedError

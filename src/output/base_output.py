@@ -14,4 +14,4 @@ class BaseOutput(metaclass=abc.ABCMeta):
         結果を出力する
         :return: 結果
         """
-        return NotImplementedError
+        raise NotImplementedError
