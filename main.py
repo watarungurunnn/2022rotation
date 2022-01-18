@@ -1,8 +1,8 @@
 import argparse
 from pathlib import Path
 
-from .src.input import simple_input
-from .src.optimize import optimize_minoura, optimize_sakaguchi
+from .src.processor import simple_processor
+from .src.optimizer import optimizer_minoura, optimizer_sakaguchi
 from .src.output import simple_output
 
 
@@ -15,14 +15,20 @@ def main():
     args = parser.parse_args()
 
     input_path = Path(args.input_path)
-    input_data = simple_input(input_path).process()
 
+    # csv/excelを読み取って成形
+    processor = simple_processor(input_path)
+
+    # inputデータの成形とoptimize
     if args.model == 'Minoura':
-        model = optimize_minoura(input_data)
+        processed_data = processor.process()
+        model = optimizer_minoura(processed_data)
     elif args.model == 'Sakaguchi':
-        model = optimize_sakaguchi(input_data)
-    opt_data = model.fit()
-    simple_output(opt_data).save()
+        processed_data = processor.process()
+        model = optimizer_sakaguchi(processed_data)
+
+    optimized_data = model.fit()
+    simple_output(optimized_data).save()
 
     return
 

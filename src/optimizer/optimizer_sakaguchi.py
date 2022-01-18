@@ -1,17 +1,17 @@
-from .base_optimize import BaseOptimize
+from .base_optimizer import BaseOptimizer
 
 
-class OptimizeSakaguchi(BaseOptimize):
+class OptimizerSakaguchi(BaseOptimizer):
     """
     順位情報を受け取り、最適化したデータを返す
     """
-    def __init__(self, input_data, **kwargs) -> None:
+    def __init__(self, processed_data, **kwargs) -> None:
         """
         kwargsは必要な引数に置き換えてください(あれば)
         :param input_data: インプットデータ
         :param kwargs:
         """
-        self.input_data = input_data
+        self.processed_data = processed_data
 
     def fit(**kwargs):
         """

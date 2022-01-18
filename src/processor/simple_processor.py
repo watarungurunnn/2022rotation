@@ -1,31 +1,37 @@
-from numpy.typing import Arraylike
+from numpy.typing import ArrayLike
 from .validator.simple_validator import SimpleValidator
-from pathlib import Path
 import pandas as pd
+from pandas import DataFrame
+from typing import Union
 
-from .base_input import BaseInput
+from .base_processor import BaseProcessor
 
 
-class SimpleInput(BaseInput):
+class SimpleProcessor(BaseProcessor):
     """
     inputを受け取り、成形したデータを返す
     """
-    def __init__(self, input_path: str) -> None:
+    def __init__(self, input_path: str, input_format: str='excel', **kwargs) -> None:
         """
         inputを受け取り、成形したデータを返す
         :params input_path: 入力ファイルのpath
+        :params kwargs: pandasへのoptional引数
         """
-        self.input_path = Path(input_path)
-        self.input_data = pd.read_excel(input_path, header=None)
-        SimpleValidator(self.input_data).validate()
+        if input_format == 'excel':
+            self.raw_data = pd.read_excel(input_path, kwargs)
+        elif input_format == 'csv':
+            self.raw_data = pd.read_csv(input_path, kwargs)
+        else:
+            raise ValueError
 
-    def process(self, column: str='order', format: str='ndarray', **kwargs) -> Arraylike:
+    def process(self, column: str='order', format: str='ndarray', **kwargs) -> Union[ArrayLike, DataFrame]:
         """
         成形した結果を返す
         :param column: 列の形式。デフォルトは'order'。'course'を選択可能(README参照)
         :param format: デフォルトは'ndarray'。'dataframe'を選択可能
         :return: データ
         """
+        SimpleValidator(self.raw_data).validate()
         if column == 'order':
             pass
         elif column == 'course':
@@ -33,12 +39,17 @@ class SimpleInput(BaseInput):
         else:
             raise ValueError
 
-
         if format == 'ndarray':
+            self.to_array()
             pass
         elif format == 'dataframe':
             pass
         else:
             raise ValueError
-
         raise NotImplementedError
+
+    def _to_array(self) -> None:
+        """
+        処理済みデータをndarrayに直す
+        """
+        pass
