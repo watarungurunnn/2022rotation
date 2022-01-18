@@ -19,9 +19,26 @@ class SimpleInput(BaseInput):
         self.input_data = pd.read_excel(input_path, header=None)
         SimpleValidator(self.input_data).validate()
 
-    def process(self, **kwargs) -> Array:
+    def process(self, column: str='order', format: str='ndarray', **kwargs) -> Arraylike:
         """
         成形した結果を返す
+        :param column: 列の形式。デフォルトは'order'。'course'を選択可能(README参照)
+        :param format: デフォルトは'ndarray'。'dataframe'を選択可能
         :return: データ
         """
-        return NotImplementedError
+        if column == 'order':
+            pass
+        elif column == 'course':
+            pass
+        else:
+            raise ValueError
+
+
+        if format == 'ndarray':
+            pass
+        elif format == 'dataframe':
+            pass
+        else:
+            raise ValueError
+
+        raise NotImplementedError
