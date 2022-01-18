@@ -40,7 +40,7 @@ class SimpleProcessor(BaseProcessor):
             raise ValueError
 
         if format == 'ndarray':
-            self.to_array()
+            self._to_array()
             pass
         elif format == 'dataframe':
             pass
